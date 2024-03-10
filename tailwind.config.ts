@@ -1,72 +1,57 @@
-import { type Config } from "tailwindcss";
+import type { Config } from 'tailwindcss'
 
-export default {
-  darkMode: ["class"],
-  content: ["src/**/*.{ts,tsx}"],
+const config = {
+  darkMode: ['class'],
+  content: [
+    './pages/**/*.{ts,tsx,js}',
+    './components/**/*.{ts,tsx,js}',
+    './app/**/*.{ts,tsx,js}',
+    './src/**/*.{ts,tsx,js}',
+	],
   theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
     extend: {
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
+        primary: '#8EDEE8',
+        primaryLight: '#DDF5F8',
+        primaryDark: '#508187',
+        secondary: '#435C75',
+        secondaryLight: '#BFCAD0',
+        secondaryDark: '#05182B',
+        white: '#fff',
+        black: '#303A3B',
+        darkGrey: '#888E8E',
+        grey: '#B8BEBF',
+        success: '#31AC54',
+        successLight: '#E8FFEE',
+        successDark: '#084E1C',
+        attention: '#F4C793',
+        attentionLight: '#FDF4E9',
+        attentionDark: '#BE8B4F',
+        error: '#C85D57',
+        errorLight: '#FBF2F1',
+        errorDark: '#9B1B14',
+        surface:'#FAFAFA',
+        surface1:'#F7FBFC',
+        surface2:'#F4FBFB',
+        surface3:'#F1FAFB',
+        surface4:'#ECF8FA',
       },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+      spacing: {
+        xs: '4px',
+        sm: '8px',
+        md: '12px',
+        lg: '16px',
+        xl: '24px',
+        xxl: '32px',
+        xxxl: '48px',
+        gt: '64px',
       },
-      keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
+      fontFamily: {
+        'sans': ['var(--font-roboto)'],
       },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-      },
-    },
+    }
   },
-  plugins: [require("tailwindcss-animate")],
-} satisfies Config;
+  plugins: [require('tailwindcss-animate')],
+} satisfies Config
+
+export default config

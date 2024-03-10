@@ -1,8 +1,6 @@
 "use client";
 
 import { type Provider } from "@supabase/supabase-js";
-import { Icons } from "~/components/Icons";
-import { Button } from "~/components/ui/button";
 import { supabase } from "~/server/supabase/supabaseClient";
 import { DevLoginButtons } from "../_components/DevLoginButtons";
 
@@ -22,26 +20,7 @@ const Page = () => {
           </h1>
 
           <div className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20">
-            <Button
-              variant="outline"
-              className="flex flex-row gap-2"
-              onClick={() => {
-                signInWithOauth("google");
-              }}
-            >
-              <Icons.google width={16} />
-              Google
-            </Button>
-            <Button
-              variant="outline"
-              className="flex flex-row gap-2"
-              onClick={() => {
-                signInWithOauth("github");
-              }}
-            >
-              <Icons.gitHub width={16} />
-              Github
-            </Button>
+            
           </div>
         </div>
       </div>
