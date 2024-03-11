@@ -34,6 +34,16 @@
         line-height: 24px;
     }
 
+    .body-xl{
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    .body-xxl{
+        font-size: 20px;
+        line-height: 32px;
+    }
+
     .title-sm{
         font-size: 14px;
         line-height: 20px;
@@ -75,7 +85,7 @@
 
     .label{
         font-size: 12px;
-        line-height: 16px;
+        line-height: 20px;
         font-weight: 500;
     }
 
@@ -98,6 +108,14 @@
     .display-lg{
         font-size: 57px;
         line-height: 64px;
+    }
+
+    /* Button */
+
+    button .material-symbols-rounded,
+    button img
+    {
+        margin-right: 8px;
     }
 }
  

@@ -8,9 +8,6 @@ dependencies:
   '@hookform/resolvers':
     specifier: ^3.3.4
     version: 3.3.4(react-hook-form@7.51.0)
-  '@next/font':
-    specifier: ^14.1.3
-    version: 14.1.3(next@14.1.3)
   '@prisma/client':
     specifier: ^5.10.2
     version: 5.10.2(prisma@5.10.2)
@@ -110,6 +107,9 @@ dependencies:
   '@tanstack/react-query-devtools':
     specifier: ^5.25.0
     version: 5.25.0(@tanstack/react-query@5.25.0)(react@18.2.0)
+  '@tanstack/react-table':
+    specifier: ^8.13.2
+    version: 8.13.2(react-dom@18.2.0)(react@18.2.0)
   '@trpc/client':
     specifier: ^10.45.1
     version: 10.45.1(@trpc/server@10.45.1)
@@ -430,14 +430,6 @@ packages:
     dependencies:
       glob: 7.1.7
     dev: true
-
-  /@next/font@14.1.3(next@14.1.3):
-    resolution: {integrity: sha512-YjdwNKdjR0FMAmH24sNjBfZs9+dVp3pN/zQi8lZxDo2YeOVf9cbB3qk95KARB1r0WxmpSYLlFTgaEPA7DlmYww==}
-    peerDependencies:
-      next: '*'
-    dependencies:
-      next: 14.1.3(react-dom@18.2.0)(react@18.2.0)
-    dev: false
 
   /@next/swc-darwin-arm64@14.1.3:
     resolution: {integrity: sha512-LALu0yIBPRiG9ANrD5ncB3pjpO0Gli9ZLhxdOu6ZUNf3x1r3ea1rd9Q+4xxUkGrUXLqKVK9/lDkpYIJaCJ6AHQ==}
@@ -2259,6 +2251,23 @@ packages:
     dependencies:
       '@tanstack/query-core': 5.25.0
       react: 18.2.0
+    dev: false
+
+  /@tanstack/react-table@8.13.2(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-b6mR3mYkjRtJ443QZh9sc7CvGTce81J35F/XMr0OoWbx0KIM7TTTdyNP2XKObvkLpYnLpCrYDwI3CZnLezWvpg==}
+    engines: {node: '>=12'}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
+      '@tanstack/table-core': 8.13.2
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
+  /@tanstack/table-core@8.13.2:
+    resolution: {integrity: sha512-/2saD1lWBUV6/uNAwrsg2tw58uvMJ07bO2F1IWMxjFRkJiXKQRuc3Oq2aufeobD3873+4oIM/DRySIw7+QsPPw==}
+    engines: {node: '>=12'}
     dev: false
 
   /@trpc/client@10.45.1(@trpc/server@10.45.1):
