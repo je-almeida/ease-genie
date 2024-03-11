@@ -6,7 +6,7 @@ const Homepage = async () => {
     <main>
       <AppHeader/>
       <div className="container">
-        <h1 className="head-lg">Home</h1>
+        <h1 className="head-lg">perfil</h1>
       </div>
     </main>
   );

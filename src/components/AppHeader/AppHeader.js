@@ -1,5 +1,9 @@
-import React from "react";
+"use client";
+
+import React from "react"
+import Link from "next/link"
 import Image from "next/image"
+import { usePathname } from 'next/navigation'
 
 import {
   Avatar,
@@ -19,32 +23,53 @@ import {
 } from "~/components/ui/dropdown-menu"
 
 
+const activeNavLink = (linkUrl) => {
+  
+  const currentPath = usePathname();
+  const styles = "body-lg px-lg rounded-full hover:no-underline";
+  const notActive = "hover:font-medium hover:text-secondaryDark";
+  const active = "text-secondaryDark font-medium bg-primary mx-sm";
+
+  if(currentPath == linkUrl)
+  {
+    return styles + " " +active
+  } 
+  else 
+  {
+    return styles + " " + notActive
+  }
+}
+
 const AppHeader = () => {
   return (
     <header className="flex justify-between sticky shadow-md px-xl py-lg">
       <div className="flex items-center"> {/* Navigation */}
-          <a href="" className="mr-lg">
+          <a href="" className="mr-xl">
           <Image src="/assets/logo.svg" width="135" height="48" alt="Ease Genie" priority={true}/> 
           </a>
 
           {[
-            ['Home', '#'],
-            ['Agenda', '#'],
-            ['Pacientes', '#'],
-            ['Financeiro', '#'],
+            ['Home', '/'],
+            ['Agenda', '/agenda'],
+            ['Pacientes', '/patients'],
+            ['Financeiro', '/financial'],
           ].map(([title, url]) => (
-            <a href={url} className="body-lg px-md mx-sm hover:text-secondaryDark hover:no-underline hover:font-medium">{title}</a>
+            <Link href={url} className={activeNavLink(url)}>{title}</Link>
           ))}
 
       </div>
       <div className="flex items-center space-x-sm"> {/* User menu */}
-
-        <Button variant="ghost" size="icon">
-          <span className="material-symbols-rounded">help</span>
-        </Button>
-        <Button variant="ghost" size="icon">
-          <span className="material-symbols-rounded">settings</span>
-        </Button>
+        
+        <Link href="/help">
+          <Button variant="ghost" size="icon">
+            <span className="material-symbols-rounded">help</span>
+          </Button>
+        </Link>
+        <Link href="/settings">
+          <Button variant="ghost" size="icon">
+            <span className="material-symbols-rounded">settings</span>
+          </Button>
+        </Link>
        
         <DropdownMenu>  {/* menu de usuário */}
           <DropdownMenuTrigger asChild>
@@ -55,7 +80,7 @@ const AppHeader = () => {
               </Avatar>
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="w-56" align="end" forceMount>
+          <DropdownMenuContent className="w-56 bg-white" align="end" forceMount>
             <DropdownMenuLabel className="font-normal">
               <div className="flex flex-col space-y-1">
                 <p className="text-sm font-medium leading-none">shadcn</p>
@@ -66,24 +91,20 @@ const AppHeader = () => {
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-              <DropdownMenuItem>
-                Perfil
-                <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+              <DropdownMenuItem className="cursor-pointer">
+                <Link href="/profile">
+                  Perfil
+                </Link>
               </DropdownMenuItem>
-              <DropdownMenuItem>
-                Billing
-                <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+              <DropdownMenuItem className="cursor-pointer">
+                <Link href="/billing">
+                  Meu plano
+                </Link>
               </DropdownMenuItem>
-              <DropdownMenuItem>
-                Configurações
-                <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-              </DropdownMenuItem>
-              <DropdownMenuItem>New Team</DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer">
               Log out
-              <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

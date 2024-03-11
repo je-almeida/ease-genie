@@ -9,6 +9,9 @@ const config = {
     './src/**/*.{ts,tsx,js}',
 	],
   theme: {
+    container: {
+      center: true,
+    },
     extend: {
       colors: {
         primary: '#8EDEE8',
