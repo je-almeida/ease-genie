@@ -1,34 +1,15 @@
-"use client";
+import Link from "next/link";
+import AppHeader from "~/components/AppHeader/AppHeader";
 
-import { type Provider } from "@supabase/supabase-js";
-import { supabase } from "~/server/supabase/supabaseClient";
-import { DevLoginButtons } from "../_components/DevLoginButtons";
-
-const Page = () => {
-  const signInWithOauth = (provider: Provider) => {
-    void supabase().auth.signInWithOAuth({
-      provider: provider,
-    });
-  };
-
+const Homepage = async () => {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c]">
-      <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-        <div className="flex flex-col items-center gap-6">
-          <h1 className="text-3xl font-extrabold tracking-tight text-white">
-            Login
-          </h1>
-
-          <div className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20">
-            
-          </div>
-        </div>
+    <main>
+      <AppHeader/>
+      <div className="container">
+        <h1 className="head-lg">Login</h1>
       </div>
-      {process.env.NEXT_PUBLIC_VERCEL_ENV !== "production" && (
-        <DevLoginButtons />
-      )}
     </main>
   );
 };
 
-export default Page;
+export default Homepage;
