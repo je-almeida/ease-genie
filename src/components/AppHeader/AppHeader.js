@@ -42,7 +42,7 @@ const activeNavLink = (linkUrl) => {
 
 const AppHeader = () => {
   return (
-    <header className="flex justify-between sticky shadow-md px-xl py-lg">
+    <header className="flex justify-between fixed z-40 w-full shadow-md px-xxxl py-lg bg-white">
       <div className="flex items-center"> {/* Navigation */}
           <a href="" className="mr-xl">
           <Image src="/assets/logo.svg" width="135" height="48" alt="Ease Genie" priority={true}/> 
@@ -54,22 +54,22 @@ const AppHeader = () => {
             ['Pacientes', '/patients'],
             ['Financeiro', '/financial'],
           ].map(([title, url]) => (
-            <Link href={url} className={activeNavLink(url)}>{title}</Link>
+            <Link key={"navLink"+title} href={url} className={activeNavLink(url)}>{title}</Link>
           ))}
 
       </div>
       <div className="flex items-center space-x-sm"> {/* User menu */}
         
-        <Link href="/help">
-          <Button variant="ghost" size="icon">
-            <span className="material-symbols-rounded">help</span>
+          <Button asChild variant="ghost" size="icon">
+            <Link href="/help">
+              <span className="material-symbols-rounded">help</span>
+            </Link>
           </Button>
-        </Link>
-        <Link href="/settings">
-          <Button variant="ghost" size="icon">
-            <span className="material-symbols-rounded">settings</span>
+          <Button asChild variant="ghost" size="icon">
+            <Link href="/settings">
+              <span className="material-symbols-rounded">settings</span>
+            </Link>
           </Button>
-        </Link>
        
         <DropdownMenu>  {/* menu de usuário */}
           <DropdownMenuTrigger asChild>

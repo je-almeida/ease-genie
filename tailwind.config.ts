@@ -46,8 +46,9 @@ const config = {
         lg: '16px',
         xl: '24px',
         xxl: '32px',
-        xxxl: '48px',
-        gt: '64px',
+        xxxl: '40px',
+        gt: '48px',
+        xg: '64px',
       },
       fontFamily: {
         'sans': ['var(--font-roboto)'],

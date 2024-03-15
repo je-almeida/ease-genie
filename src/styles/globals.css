@@ -6,16 +6,16 @@
  *{
     color:#303A3B;
  }
-
- a:hover{
-    text-decoration: underline;
- }
 }
  
 @layer components {
 
     .container{
-        padding: 32px;
+        padding: 48px;
+    }
+
+    .container-full{
+        padding: 128px 48px 80px;
     }
     
     /* --------- fonts --------- */
@@ -111,11 +111,20 @@
     }
 
     /* Button */
-
     button .material-symbols-rounded,
     button img
     {
         margin-right: 8px;
     }
+
+    /* Table */
+    table .action-buttons *{
+        opacity: 0.50;
+    }
+
+    table tr:hover .action-buttons *{
+        opacity: 1;
+    }
+
 }
  
