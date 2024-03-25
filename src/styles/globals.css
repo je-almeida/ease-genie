@@ -6,6 +6,10 @@
  *{
     color:#303A3B;
  }
+
+ a{
+    display:flex;
+ }
 }
  
 @layer components {
@@ -16,6 +20,10 @@
 
     .container-full{
         padding: 128px 48px 80px;
+    }
+
+    a span{
+        margin-right: 8px;  
     }
     
     /* --------- fonts --------- */

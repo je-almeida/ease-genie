@@ -33,11 +33,20 @@ export const columns: ColumnDef<Patients>[] = [
     {
         accessorKey: "avatar",
         header: "",
+    /**
+     * Renders an Avatar component with the user's avatar image and initials.
+     *
+     * @param {object} cell - An object containing the row data.
+     * @param {object} cell.row - The row data object.
+     * @param {string} cell.row.getValue - A function that returns the value of the "avatar" field in the row data.
+     * @param {string} cell.row.original.name - The name of the user.
+     * @return {JSX.Element} - The rendered Avatar component.
+     */
         cell: ({ row }) => {
 
-            const imageURL = row.getValue("avatar")
+            const imageURL: string = row.getValue("avatar")
             const name = row.original.name
-            var lastName = name.split(' ').pop();
+            var lastName = name ? name.split(' ').pop() ?? "" : "";
             var acronym = name.charAt(0) + lastName.charAt(0)
             
             return  <Avatar key={"avatar"+row.index}>
@@ -49,6 +58,12 @@ export const columns: ColumnDef<Patients>[] = [
     {
         accessorKey: "name",
         header: () => <div className="min-w-[240px]">Nome</div>,
+        /**
+         * Renders a cell in the table with the capitalized name value from the given row.
+         *
+         * @param {object} row - The row object containing the data for the cell.
+         * @return {JSX.Element} The JSX element representing the cell.
+         */
         cell: ({ row }) => {
             const name:string = row.getValue("name")
 
@@ -63,13 +78,7 @@ export const columns: ColumnDef<Patients>[] = [
         cell: ({ row }) => {
             const birthday = row.getValue("age")
             const age = calculateAge(birthday)
-            var ageString
-
-            if (age < 10){
-                ageString = ("0" + age)
-            } else {
-                ageString = (age)
-            }
+            const ageString = ("0" + (age < 10 ? "0" + age : age)).slice(-2)
 
             return  <div className="text-center" key={"age"+row.index}>
                         {ageString}

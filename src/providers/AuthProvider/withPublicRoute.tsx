@@ -16,7 +16,7 @@ export const withPublicRoute = <T extends object>(
 
     useEffect(() => {
       if (user && isUserDataLoaded) {
-        router.push("/");
+        router.push("/dashboard");
       }
     }, [user, isUserDataLoaded, router]);
 

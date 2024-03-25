@@ -11,7 +11,7 @@ export const DevLoginButtons = () => {
   return (
     <div className="flex flex-col gap-2">
       {testAccounts.map((account, index) => (
-        <div key={index} className="flex flex-col items-start text-white">
+        <div key={index} className="flex flex-col items-start">
           <button
             onClick={() => {
               void supabase().auth.signInWithPassword(account);

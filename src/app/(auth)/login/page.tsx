@@ -1,5 +1,7 @@
 "use client"
- 
+
+import { type Provider } from "@supabase/supabase-js";
+import { supabase } from "~/server/supabase/supabaseClient";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
@@ -7,6 +9,8 @@ import * as React from 'react';
 import Link from "next/link";
 import Image from "next/image"
 import { Button } from "~/components/ui/button";
+
+import { DevLoginButtons } from "../_components/DevLoginButtons";
  
 import {
   Form,
@@ -18,6 +22,21 @@ import {
 import { FloatingLabelInput  } from "~/components/ui/floating-label-input"
 
 const LoginPage = () => {
+
+  const signInWithOauth = (provider: Provider) => {
+    void supabase().auth.signInWithOAuth({
+      provider: provider,
+    });
+  };
+
+  async function signInWithAzure() {
+    const { data, error } = await supabase().auth.signInWithOAuth({
+      provider: 'azure',
+      options: {
+        scopes: 'email',
+      },
+    })
+  }
 
   const formSchema = z.object({
     username: z
@@ -52,12 +71,22 @@ const LoginPage = () => {
         {/* ============  Form ============= */}
         <div className="p-gt h-screen flex flex-col flex-wrap justify-center content-center"> 
           <div className="flex flex-col justify-center content-center min-w-[320px] space-y-4">
-            <Button variant="outline">
+            <Button  
+              variant="outline" 
+              onClick={() => {
+                signInWithOauth("google");
+              }}
+            >
               <Image src="/assets/google-icon.svg" width="20" height="20" alt="Continuar com Google" priority={true}/> 
               Continuar com Google
             </Button>
 
-            <Button variant="outline">
+            <Button 
+              variant="outline"
+              onClick={() => {
+                signInWithAzure();
+              }}
+            >
               <Image src="/assets/microsoft-icon.svg" width="20" height="20" alt="Coontinuar com Microsoft" priority={true}/> 
               Continuar com Microsoft
             </Button>
@@ -89,6 +118,9 @@ const LoginPage = () => {
                 <Button type="submit">Login</Button>
               </form>
             </Form>
+            {process.env.NEXT_PUBLIC_VERCEL_ENV !== "production" && (
+              <DevLoginButtons />
+            )}
           </div> 
         </div>
 

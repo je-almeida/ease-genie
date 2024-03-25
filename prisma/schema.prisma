@@ -45,7 +45,7 @@ model FlowState {
 
 /// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
 model Identities {
-  id           String
+  providerId   String    @map("provider_id")
   userId       String    @map("user_id") @db.Uuid
   identityData Json      @map("identity_data")
   provider     String
@@ -53,9 +53,10 @@ model Identities {
   createdAt    DateTime? @map("created_at") @db.Timestamptz(6)
   updatedAt    DateTime? @map("updated_at") @db.Timestamptz(6)
   email        String?   @default(dbgenerated("lower((identity_data ->> 'email'::text))"))
+  id           String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   users        Users     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: NoAction)
 
-  @@id([provider, id])
+  @@unique([providerId, provider], map: "identities_provider_id_provider_unique")
   @@index([email])
   @@index([userId])
   @@map("identities")
@@ -97,6 +98,7 @@ model MfaChallenges {
   ipAddress  String     @map("ip_address") @db.Inet
   mfaFactors MfaFactors @relation(fields: [factorId], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "mfa_challenges_auth_factor_id_fkey")
 
+  @@index([createdAt(sort: Desc)], map: "mfa_challenge_created_at_idx")
   @@map("mfa_challenges")
   @@schema("auth")
 }
@@ -107,7 +109,7 @@ model MfaFactors {
   userId        String          @map("user_id") @db.Uuid
   friendlyName  String?         @map("friendly_name")
   factorType    FactorType      @map("factor_type")
-  status        FactorStatus    @map("status")
+  status        FactorStatus
   createdAt     DateTime        @map("created_at") @db.Timestamptz(6)
   updatedAt     DateTime        @map("updated_at") @db.Timestamptz(6)
   secret        String?
@@ -115,6 +117,7 @@ model MfaFactors {
   users         Users           @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: NoAction)
 
   @@index([userId, createdAt], map: "factor_id_created_at_idx")
+  @@index([userId])
   @@map("mfa_factors")
   @@schema("auth")
 }
@@ -136,6 +139,7 @@ model RefreshTokens {
   @@index([instanceId, userId])
   @@index([parent])
   @@index([sessionId, revoked])
+  @@index([updatedAt(sort: Desc)])
   @@map("refresh_tokens")
   @@schema("auth")
 }
@@ -169,10 +173,12 @@ model SamlRelayStates {
   fromIpAddress String?      @map("from_ip_address") @db.Inet
   createdAt     DateTime?    @map("created_at") @db.Timestamptz(6)
   updatedAt     DateTime?    @map("updated_at") @db.Timestamptz(6)
+  flowStateId   String?      @map("flow_state_id") @db.Uuid
   ssoProviders  SsoProviders @relation(fields: [ssoProviderId], references: [id], onDelete: Cascade, onUpdate: NoAction)
 
   @@index([forEmail])
   @@index([ssoProviderId])
+  @@index([createdAt(sort: Desc)])
   @@map("saml_relay_states")
   @@schema("auth")
 }
@@ -192,14 +198,19 @@ model Sessions {
   createdAt     DateTime?       @map("created_at") @db.Timestamptz(6)
   updatedAt     DateTime?       @map("updated_at") @db.Timestamptz(6)
   factorId      String?         @map("factor_id") @db.Uuid
-  aal           AalLevel?       @map("aal")
+  aal           AalLevel?
   notAfter      DateTime?       @map("not_after") @db.Timestamptz(6)
+  refreshedAt   DateTime?       @map("refreshed_at") @db.Timestamp(6)
+  userAgent     String?         @map("user_agent")
+  ip            String?         @db.Inet
+  tag           String?
   mfaAmrClaims  MfaAmrClaims[]
   refreshTokens RefreshTokens[]
   users         Users           @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: NoAction)
 
   @@index([userId])
   @@index([userId, createdAt], map: "user_id_created_at_idx")
+  @@index([notAfter(sort: Desc)])
   @@map("sessions")
   @@schema("auth")
 }

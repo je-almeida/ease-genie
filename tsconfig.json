@@ -33,7 +33,8 @@
     "**/*.tsx",
     "**/*.cjs",
     "**/*.mjs",
+    "**/*.js",
     ".next/types/**/*.ts"
-, "src/components/AppHeader/AppHeader.js"  ],
+   ],
   "exclude": ["node_modules"]
 }

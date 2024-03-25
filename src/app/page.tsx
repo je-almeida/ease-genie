@@ -1,14 +1,19 @@
 import Link from "next/link";
-import AppHeader from "~/components/AppHeader/AppHeader";
+import SiteHeader from "~/components/ui/siteHeader";
+import { PublicRoute } from "~/components/PublicRoute/PublicRoute";
 
 const Homepage = async () => {
   return (
-    <main>
-      <AppHeader/>
-      <div className="container">
-        <h1 className="head-lg">Home</h1>
-      </div>
-    </main>
+
+    <PublicRoute>
+
+        <SiteHeader />
+
+        <div className="container-full">
+          <h1 className="head-lg mb-md">Home</h1>
+        </div>
+        
+    </PublicRoute>
   );
 };
 

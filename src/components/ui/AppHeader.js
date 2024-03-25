@@ -1,16 +1,19 @@
 "use client";
 
-import React from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { usePathname } from 'next/navigation'
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { usePathname, useRouter } from 'next/navigation';
+import { Button } from "~/components/ui/button";
+import Logout from "../Logout/Logout";
+
 
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "~/components/ui/avatar"
-import { Button } from "~/components/ui/button"
+} from "~/components/ui/avatar";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,11 +21,16 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from "~/components/ui/dropdown-menu"
+} from "~/components/ui/dropdown-menu";
 
 
+/**
+ * Determines the styling for an active navigation link based on the current path.
+ *
+ * @param {string} linkUrl - The URL of the navigation link to compare with the current path.
+ * @return {string} The combined styles for the navigation link.
+ */
 const activeNavLink = (linkUrl) => {
   
   const currentPath = usePathname();
@@ -40,7 +48,13 @@ const activeNavLink = (linkUrl) => {
   }
 }
 
+/**
+ * Renders the header component of the application.
+ *
+ * @return {JSX.Element} The rendered header component.
+ */
 const AppHeader = () => {
+
   return (
     <header className="flex justify-between fixed z-40 w-full shadow-md px-xxxl py-lg bg-white">
       <div className="flex items-center"> {/* Navigation */}
@@ -49,7 +63,7 @@ const AppHeader = () => {
           </a>
 
           {[
-            ['Home', '/'],
+            ['Home', '/dashboard'],
             ['Agenda', '/agenda'],
             ['Pacientes', '/patients'],
             ['Financeiro', '/financial'],
@@ -93,18 +107,20 @@ const AppHeader = () => {
             <DropdownMenuGroup>
               <DropdownMenuItem className="cursor-pointer">
                 <Link href="/profile">
+                  <span className="material-symbols-rounded">account_circle</span>
                   Perfil
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem className="cursor-pointer">
                 <Link href="/billing">
+                  <span className="material-symbols-rounded">account_balance_wallet</span>
                   Meu plano
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem className="cursor-pointer">
-              Log out
+            <DropdownMenuItem className="cursor-pointer" >
+              <Logout />
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

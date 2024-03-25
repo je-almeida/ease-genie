@@ -1,3 +1,6 @@
 {
-    "tailwind-fold.autoFold": false
+    "tailwind-fold.autoFold": false,
+    "search.exclude": {
+        "**/node_modules": false
+    }
 }

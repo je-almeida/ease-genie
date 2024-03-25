@@ -1,7 +1,5 @@
-import Link from "next/link";
-import AppHeader from "~/components/AppHeader/AppHeader";
-
 import * as React from "react"
+import Link from "next/link";
 
 
 import { Button } from "~/components/ui/button"
@@ -10,6 +8,11 @@ import { Button } from "~/components/ui/button"
 import { Patients, columns } from "./columns"
 import { DataTable } from "~/components/ui/data-table"
 
+/**
+ * Fetches data from the API.
+ *
+ * @return {Promise<Patients[]>} An array of patient objects.
+ */
 async function getData(): Promise<Patients[]> {
   // Fetch data from your API here.
   return [
@@ -237,6 +240,10 @@ async function getData(): Promise<Patients[]> {
 }
 
 
+/**
+ * Function that fetches data and displays a page with a list of patients.
+
+ */
 const patientsPage = async () => {
 
   // data object
@@ -244,12 +251,9 @@ const patientsPage = async () => {
   
   return (
     <main>
-      <AppHeader/>
-      <div className="container-full">
         <h1 className="head-lg mb-xxl">Pacientes</h1>
 
         <DataTable columns={columns} data={data} />
-      </div>
     </main>
   );
 };
