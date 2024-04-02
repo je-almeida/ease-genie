@@ -24,6 +24,13 @@ import {
   DropdownMenuTrigger,
 } from "~/components/ui/dropdown-menu";
 
+import { 
+  CircleHelp,
+  Settings,
+  Wallet,
+  CircleUserRound
+ } from "lucide-react";
+
 
 /**
  * Determines the styling for an active navigation link based on the current path.
@@ -34,17 +41,14 @@ import {
 const activeNavLink = (linkUrl) => {
   
   const currentPath = usePathname();
-  const styles = "body-lg px-lg rounded-full hover:no-underline";
-  const notActive = "hover:font-medium hover:text-secondaryDark";
-  const active = "text-secondaryDark font-medium bg-primary mx-sm";
+  const styles = "px-lg text-md transition-colors hover:text-foreground";
+  const active = "text-foreground";
 
   if(currentPath == linkUrl)
   {
     return styles + " " +active
-  } 
-  else 
-  {
-    return styles + " " + notActive
+  } else {
+    return styles
   }
 }
 
@@ -56,9 +60,9 @@ const activeNavLink = (linkUrl) => {
 const AppHeader = () => {
 
   return (
-    <header className="flex justify-between fixed z-40 w-full shadow-md px-xxxl py-lg bg-white">
-      <div className="flex items-center"> {/* Navigation */}
-          <a href="" className="mr-xl">
+    <header className="flex justify-between fixed z-40 w-full border-b px-xxxl py-lg bg-white">
+      <div className="flex items-center font-medium text-muted-foreground"> {/* Navigation */}
+          <a href="" className="mr-xxl">
           <Image src="/assets/logo.svg" width="135" height="48" alt="Ease Genie" priority={true}/> 
           </a>
 
@@ -76,19 +80,19 @@ const AppHeader = () => {
         
           <Button asChild variant="ghost" size="icon">
             <Link href="/help">
-              <span className="material-symbols-rounded">help</span>
+              <CircleHelp />
             </Link>
           </Button>
           <Button asChild variant="ghost" size="icon">
             <Link href="/settings">
-              <span className="material-symbols-rounded">settings</span>
+              <Settings />
             </Link>
           </Button>
        
         <DropdownMenu>  {/* menu de usuário */}
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="relative h-12 w-12 rounded-full">
-              <Avatar className="h-12 w-12">
+            <Button variant="ghost" size="icon">
+              <Avatar>
                 <AvatarImage src="/avatars/01.png" alt="@shadcn" />
                 <AvatarFallback>SC</AvatarFallback>
               </Avatar>
@@ -107,13 +111,13 @@ const AppHeader = () => {
             <DropdownMenuGroup>
               <DropdownMenuItem className="cursor-pointer">
                 <Link href="/profile">
-                  <span className="material-symbols-rounded">account_circle</span>
+                  <CircleUserRound />
                   Perfil
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem className="cursor-pointer">
                 <Link href="/billing">
-                  <span className="material-symbols-rounded">account_balance_wallet</span>
+                  <Wallet />
                   Meu plano
                 </Link>
               </DropdownMenuItem>

@@ -30,7 +30,7 @@ const TableBody = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <tbody
     ref={ref}
-    className={cn("hover:[&_tr]:bg-surface1 [&_tr:nth-child(odd)]:bg-grey/10 hover:[&_tr:nth-child(odd)]:bg-surface1", className)}
+    className={cn("hover:[&_tr]:bg-surface2 [&_tr:nth-child(odd)]:bg-surface hover:[&_tr:nth-child(odd)]:bg-surface2", className)}
     {...props}
   />
 ))

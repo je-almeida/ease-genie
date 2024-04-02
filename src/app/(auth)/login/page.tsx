@@ -125,7 +125,7 @@ const LoginPage = () => {
         </div>
 
         {/* ============ Quote ============= */}
-        <div className="bg-secondaryDark p-gt h-screen flex flex-col justify-between items-end"> 
+        <div className="bg-gradient p-gt h-screen flex flex-col justify-between items-end"> 
           <Image className="brightness-0 invert" src="/assets/logo.svg" width="135" height="48" alt="Ease Genie" priority={true}/> 
             <div className="text-right"> 
               <div className="text-white body-xxl max-w-[530px]">"O Ease Genie me ajudou a cuidar dos meus clientes. Agora eu sou capaz de fazer muito mais, em menos tempo"</div>

@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss';
 
 const config = {
   darkMode: ['class'],
@@ -11,33 +11,54 @@ const config = {
   theme: {
     container: {
       center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
     },
     extend: {
       colors: {
-        primary: '#8EDEE8',
-        primaryLight: '#DDF5F8',
-        primaryDark: '#508187',
-        secondary: '#435C75',
-        secondaryLight: '#BFCAD0',
-        secondaryDark: '#05182B',
-        white: '#fff',
-        black: '#303A3B',
-        darkGrey: '#888E8E',
-        grey: '#B8BEBF',
-        success: '#31AC54',
-        successLight: '#E8FFEE',
-        successDark: '#084E1C',
-        attention: '#F4C793',
-        attentionLight: '#FDF4E9',
-        attentionDark: '#BE8B4F',
-        error: '#C85D57',
-        errorLight: '#FBF2F1',
-        errorDark: '#9B1B14',
+        border: "var(--border)",
+        input: "var(--input)",
+        ring: "var(--ring)",
+        background: "var(--background)",
+        foreground: "var(--foreground)",
         surface:'#FAFAFA',
-        surface1:'#F7FBFC',
-        surface2:'#F4FBFB',
-        surface3:'#F1FAFB',
-        surface4:'#ECF8FA',
+        surface1:'#FCFAFF',
+        surface2:'#F8F4FF',
+        surface3:'#F2EAFF',
+        surface4:'#EBDFFF',
+        primary: {
+          DEFAULT: "var(--primary)",
+          foreground: "var(--primary-foreground)",
+        },
+        secondary: {
+          DEFAULT: "var(--secondary)",
+          foreground: "var(--secondary-foreground)",
+        },
+        destructive: {
+          DEFAULT: "var(--destructive)",
+          foreground: "var(--destructive-foreground)",
+        },
+        muted: {
+          DEFAULT: "var(--muted)",
+          foreground: "var(--muted-foreground)",
+        },
+        accent: {
+          DEFAULT: "var(--accent)",
+          foreground: "var(--accent-foreground)",
+        },
+        popover: {
+          DEFAULT: "var(--popover)",
+          foreground: "var(--popover-foreground)",
+        },
+        card: {
+          DEFAULT: "var(--card)",
+          foreground: "var(--card-foreground)",
+        },
+      },
+      backgroundImage: {
+        'gradient': `var(--gradient)`,
       },
       spacing: {
         xs: '4px',
@@ -50,12 +71,31 @@ const config = {
         gt: '48px',
         xg: '64px',
       },
-      fontFamily: {
-        'sans': ['var(--font-roboto)'],
+      borderRadius: {
+        lg: `var(--radius)`,
+        md: `calc(var(--radius) - 2px)`,
+        sm: "calc(var(--radius) - 4px)",
       },
-    }
+      fontFamily: {
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
+    },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [require("tailwindcss-animate")],
 } satisfies Config
 
 export default config

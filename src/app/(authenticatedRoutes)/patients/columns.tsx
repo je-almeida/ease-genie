@@ -119,7 +119,7 @@ export const columns: ColumnDef<Patients>[] = [
             const array = groupsString.split(',')
             
             return array.map((group) => (
-                <Badge className="mr-xs mb-xs" key={group+row.index}>
+                <Badge className="mr-xs mb-xs" variant="outline" key={group+row.index}>
                     {group} 
                 </Badge>
             ));  

@@ -3,13 +3,46 @@
 @tailwind utilities;
 
 @layer base {
- *{
-    color:#303A3B;
- }
 
- a{
-    display:flex;
- }
+    :root {
+        --background: #ffffff;
+        --foreground: 	#030712;
+
+        --card: #ffffff;
+        --card-foreground: #030712;
+
+        --popover: #ffffff;
+        --popover-foreground: #030712;
+
+        --primary: #6947bd;
+        --primary-foreground: #ffffff;
+
+        --secondary: #ae1bde;
+        --secondary-foreground: #ffffff;
+
+        --gradient: linear-gradient(19deg, var(--primary) 0%, var(--secondary) 100%);
+
+        --muted: #f3f4f6;
+        --muted-foreground: #6b7280;
+
+        --accent: #f3f4f6;
+        --accent-foreground:#6b7280;
+
+        --destructive: 	#ef4444;
+        --destructive-foreground: #f9fafb;
+
+        --border: #e5e7eb;
+        --input: #e5e7eb;
+
+        --ring: #7c3aed;
+        --radius: 0.5rem;
+    }
+      
+    a{
+        display:flex;
+        gap: 8px;
+        align-items: center;
+    }
 }
  
 @layer components {
@@ -19,11 +52,7 @@
     }
 
     .container-full{
-        padding: 128px 48px 80px;
-    }
-
-    a span{
-        margin-right: 8px;  
+        padding: 0 0 64px 56px;
     }
     
     /* --------- fonts --------- */
