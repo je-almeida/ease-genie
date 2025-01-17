@@ -16,7 +16,16 @@ It allows us to call database in server components through supabase-js, for clie
 
 ### Initial Setup
 
-## If you want to develop on local supabase instance, follow the steps below:
+- Install Git (https://github.com/git-guides/install-git)
+- Install Docker (https://www.docker.com/)
+- Install Node/npm (https://nodejs.org/en/download/package-manager/)
+- Install pnpm (https://dev.to/adiatiayu/how-to-install-pnpm-with-npm-on-windows-11-5gbn)
+- Install all pnpm dependencies (pnpm install)
+- Install all npm dependencies (npm i --save)
+- Install scoop (https://scoop.sh/)
+- Install supabase (https://supabase.com/docs/guides/local-development/cli/getting-started?queryGroups=platform&platform=windows)
+
+## If you want to develop on local supabase instance, follow the steps below:v
 
 Then go to supabase/config.toml file and change your service name.
 
