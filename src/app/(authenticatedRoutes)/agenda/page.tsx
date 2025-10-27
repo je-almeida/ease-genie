@@ -1,16 +1,11 @@
-'use client';
+"use client";
 
-import Link from "next/link";
-import FullCalendar from '~/components/FullCalendar/FullCalendar';
+import dynamic from "next/dynamic";
 
-const Homepage = async () => {
-  return (
-    <div className="flex min-h-screen w-full flex-col">
-      <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
-          <FullCalendar />
-      </main>
-    </div>
-  );
-};
+const Schedule = dynamic(() => import("~/components/Scheduler/schedule"), {
+  ssr: false,
+});
 
-export default Homepage;
+export default function AgendaPage() {
+  return <Schedule />;
+}

@@ -42,7 +42,7 @@ import {
   DropdownMenuTrigger,
 } from "~/components/ui/dropdown-menu";
 
-const activeNavLink = (linkUrl) => {
+const activeNavLink = (linkUrl: string) => {
   
   const currentPath = usePathname();
   const styles = "flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8";

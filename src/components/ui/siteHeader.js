@@ -8,6 +8,9 @@ import { Button } from "~/components/ui/button"
 
 
 
+/**
+ * @param {string} linkUrl
+ */
 const activeNavLink = (linkUrl) => {
   
   const currentPath = usePathname();
@@ -39,9 +42,12 @@ const SiteHeader = () => {
             ['Preços', '/pricing'],
             ['Blog', '/blog'],
             ['Ajuda', '/help'],
-          ].map(([title, url]) => (
-            <Link key={"navLink"+title} href={url} className={activeNavLink(url)}>{title}</Link>
-          ))}
+          ].map(([title, url]) => {
+            const href = url || '/';
+            return (
+              <Link key={"navLink"+title} href={href} className={activeNavLink(href)}>{title}</Link>
+            );
+          })}
 
       </div>
       <div className="flex items-center space-x-sm"> {/* User menu */}

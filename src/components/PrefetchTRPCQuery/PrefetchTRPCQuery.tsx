@@ -1,4 +1,4 @@
-import { Hydrate, dehydrate } from "@tanstack/react-query";
+import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 import { api as serverApi } from "~/trpc/server";
 import { getServerQueryClient } from "~/utils/getQueryClient";
 import { type RouterInputs } from "~/trpc/shared";
@@ -39,15 +39,15 @@ export const PrefetchTRPCQuery = async <T extends AccessPaths<RouterInputs>>({
     // Just let the frontend handle it if it fails
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    const data = await serverApi[router][procedure].query(params);
+    const data = await serverApi[router][procedure](params);
 
-    await queryClient.prefetchQuery(
-      [[router, procedure], { input: params, type: "query" }],
-      () => data,
-    );
+    await queryClient.prefetchQuery({
+      queryKey: [[router, procedure], { input: params, type: "query" }],
+      queryFn: () => data,
+    });
     const dehydratedState = dehydrate(queryClient);
 
-    return <Hydrate state={dehydratedState}>{children}</Hydrate>;
+    return <HydrationBoundary state={dehydratedState}>{children}</HydrationBoundary>;
   } catch (e) {
     console.error(e, "PrefetchTRPCQuery failed");
 

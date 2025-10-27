@@ -52,7 +52,7 @@
     }
 
     .container-full{
-        padding: 0 0 64px 56px;
+        padding: 0 0 0 56px;
     }
     
     /* --------- fonts --------- */
@@ -164,4 +164,21 @@
     }
 
 }
- 
+
+/* scheduler */
+
+    .scheduler .rbc-time-view,
+    .scheduler .rbc-time-header,
+    .scheduler .rbc-header,
+    .scheduler .rbc-time-header-content,
+    .scheduler .rbc-header + .rbc-header{
+        border: none;
+    }
+
+    .scheduler .rbc-header {
+        height: fit-content;
+    }
+
+    .scheduler .rbc-today {
+        background: none;
+    }

@@ -1,7 +1,7 @@
 import { api } from "~/trpc/server";
 
 export async function ServerDataStreaming() {
-  const data = await api.example.hello.query({ text: "from tRPC" });
+  const data = await api.example.hello({ text: "from tRPC" });
 
   await new Promise((resolve) => setTimeout(resolve, 1000));
 

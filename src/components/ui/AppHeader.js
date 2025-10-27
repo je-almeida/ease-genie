@@ -71,9 +71,12 @@ const AppHeader = () => {
             ['Agenda', '/agenda'],
             ['Pacientes', '/patients'],
             ['Financeiro', '/financial'],
-          ].map(([title, url]) => (
-            <Link key={"navLink"+title} href={url} className={activeNavLink(url)}>{title}</Link>
-          ))}
+          ].map(([title, url]) => {
+            const href = url || '/dashboard'; // fallback
+            return (
+              <Link key={"navLink"+title} href={href} className={activeNavLink(href)}>{title}</Link>
+            );
+          })}
 
       </div>
       <div className="flex items-center space-x-sm"> {/* User menu */}

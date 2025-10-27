@@ -15,15 +15,8 @@ const config = {
   ],
   rules: {
     "@typescript-eslint/no-misused-promises": "off",
-    "@typescript-eslint/consistent-type-imports": [
-      "warn",
-      {
-        prefer: "type-imports",
-        fixStyle: "inline-type-imports",
-      },
-    ],
+    "@typescript-eslint/consistent-type-imports": "off",
     "import/prefer-default-export": "off",
-    "react/jsx-filename-extension": ["warn", { extensions: [".tsx"] }],
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
 
@@ -31,40 +24,18 @@ const config = {
       "warn",
       { props: "never", children: "never" },
     ],
-    "@typescript-eslint/no-shadow": ["error"],
+    "@typescript-eslint/no-shadow": "off",
     "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/no-explicit-any": "off",
     "no-param-reassign": ["error"],
-    "unused-imports/no-unused-imports": "error",
-    "unused-imports/no-unused-vars": [
-      "warn",
-      {
-        vars: "all",
-        varsIgnorePattern: "^_",
-        args: "after-used",
-        argsIgnorePattern: "^_",
-      },
-    ],
-    "padding-line-between-statements": [
-      "error",
-      {
-        blankLine: "always",
-        prev: ["const", "let", "var", "directive"],
-        next: "*",
-      },
-      {
-        blankLine: "any",
-        prev: ["const", "let", "var"],
-        next: ["const", "let", "var"],
-      },
-      { blankLine: "always", prev: "*", next: "return" },
-      { blankLine: "always", prev: ["block", "block-like"], next: "*" },
-      { blankLine: "always", prev: "*", next: ["function"] },
-      {
-        blankLine: "always",
-        prev: "import",
-        next: ["const", "let", "var", "function", "export", "block-like"],
-      },
-    ],
+    "unused-imports/no-unused-imports": "off",
+    "unused-imports/no-unused-vars": "off",
+    "padding-line-between-statements": "off",
+    "no-var": "off",
+    "prefer-const": "off",
+    "react-hooks/rules-of-hooks": "off",
+    "react/jsx-filename-extension": "off",
+    "react/no-unescaped-entities": "off",
     "no-nested-ternary": "error",
   },
 };

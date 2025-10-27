@@ -9,8 +9,8 @@ const calculateAge = (dateString: string) => {
  
    // turn DD/MM/YYYY in MM/DD/YYYY (needed to calc dates)
    var dateParts = dateString.split("/");
-   if (dateParts && dateParts.length >= 3) {
-      var dateObject = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0]);
+   if (dateParts && dateParts.length >= 3 && dateParts[0] && dateParts[1] && dateParts[2]) {
+      var dateObject = new Date(+dateParts[2]!, +dateParts[1]! - 1, +dateParts[0]!);
  
      // Calc age
      var age = today.getFullYear() - dateObject.getFullYear();

@@ -76,9 +76,9 @@ export const columns: ColumnDef<Patients>[] = [
         accessorKey: "age",
         header: () => <div className="text-center">Idade</div>,
         cell: ({ row }) => {
-            const birthday = row.getValue("age")
+            const birthday = row.getValue("age") as string
             const age = calculateAge(birthday)
-            const ageString = ("0" + (age < 10 ? "0" + age : age)).slice(-2)
+            const ageString = age ? ("0" + (age < 10 ? "0" + age : age)).slice(-2) : "N/A"
 
             return  <div className="text-center" key={"age"+row.index}>
                         {ageString}
